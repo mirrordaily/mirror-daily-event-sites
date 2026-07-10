@@ -14,7 +14,7 @@
 1. 建立 `.env.local` 檔案，並參考下方 [環境變數](#environment-variables-環境變數) 資訊進行設定，設定方式參考 [文件](https://nextjs.org/docs/basic-features/environment-variables)
 2. 使用 `yarn install` 安裝環境依賴。
 3. 接著，使用 `yarn dev` 啟動服務，進行開發測試。
-4. 開發完畢後，使用 `yarn build` 來建構正式環境程式，並使用 `yarn export` 生成 `out` 靜態專題資料夾，並將資料夾內的檔案們放上 GCS。
+4. 開發完畢後，使用 `yarn build` 來建構正式環境程式（已設定 `output: 'export'`，build 會直接生成 `out` 靜態專題資料夾），並將資料夾內的檔案們放上 GCS。
 
 ## Project Directory Explanation (專案目錄結構說明)
 
@@ -69,12 +69,12 @@
 
 ## 部屬
 
-論壇專題需透過執行 `yarn export` 指令後，生成 `out` 資料夾。
+論壇專題需透過執行 `yarn build` 指令後，生成 `out` 資料夾（next.config.ts 已設定 `output: 'export'`）。
 在指定的 [Google Cloud Storage(GCS)](https://console.cloud.google.com/storage/browser/v3-statics.mirrormedia.mg/events;tab=objects?authuser=1&prefix=&forceOnObjectsSortingFiltering=false) 上創立該次論壇 slug 名稱的的資料夾後，將 `out` 內的所有檔案放入 GCS 資料夾內。
 
 注意：放論壇專題的 GCS 與一般週刊靜態專題路徑不相同，因為需求方指定希望網址呈現為 `https://events.mirrormedia.mg/events/[forumName]` 格式，因此做出此項調整。
 
-另外，由於 GCS 並無區分 dev、staging、prod 版本，僅透過創立資料夾的名稱來區分是否為 dev/prod 版本。因此要特別注意：在執行 `yarn export` 時， `NEXT_PUBLIC_ENV` 都需要設定為 'prod' 才對（可以理解成因為 GCS 沒有區分 dev/prod 版本，因此目前的 GCS 統一視為 prod 環境。）
+另外，由於 GCS 並無區分 dev、staging、prod 版本，僅透過創立資料夾的名稱來區分是否為 dev/prod 版本。因此要特別注意：在執行 `yarn build` 時， `NEXT_PUBLIC_ENV` 都需要設定為 'prod' 才對（可以理解成因為 GCS 沒有區分 dev/prod 版本，因此目前的 GCS 統一視為 prod 環境。）
 
 ---
 

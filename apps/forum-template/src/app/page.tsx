@@ -1,12 +1,13 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { breakpoint, color } from '~/styles/theme'
 import type { ForumData, NavItem } from '~/types'
-import { OG_DESC, OG_TITLE, bgImageURL, JSON_URL } from '~/config'
+import { bgImageURL, JSON_URL } from '~/config'
 
 import Layout from '~/components/layout/layout'
-import CustomHead from '~/components/shared/head'
 import ForumVideo from '~/components/forum-video'
 import Introduction from '~/components/introduction'
 import HeroImage from '~/components/hero-image'
@@ -116,12 +117,6 @@ export default function Home() {
 
   return (
     <NavListsProvider navLists={navLists}>
-      <CustomHead
-        title={OG_TITLE}
-        description={OG_DESC}
-        imageUrl="/images/og.jpg"
-      />
-
       <Layout>
         <Main>
           <HeroImage heroImageSrc={heroImageSrc} />

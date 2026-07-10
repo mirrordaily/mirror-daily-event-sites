@@ -34,6 +34,7 @@ switch (process.env.NEXT_PUBLIC_ENV) {
 }
 
 const nextConfig: NextConfig = {
+  output: 'export',
   assetPrefix: assetPrefixPath,
   images: {
     loader: 'custom',
@@ -51,11 +52,6 @@ const nextConfig: NextConfig = {
         as: '*.js',
       },
     },
-  },
-  exportPathMap: async function () {
-    return {
-      '/': { page: '/' },
-    }
   },
 }
 
