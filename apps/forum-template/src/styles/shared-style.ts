@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 import { breakpoint, color } from '~/styles/theme'
 
 export const defaultBlockStyle = css`
-  font-family: 'Noto Sans TC';
+  font-family: var(--font-noto-sans-tc);
   width: 100%;
   margin: auto;
   padding: 30px 20px;

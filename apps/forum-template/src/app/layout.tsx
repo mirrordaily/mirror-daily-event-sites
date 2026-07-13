@@ -1,18 +1,29 @@
 import type { Metadata, Viewport } from 'next'
+import { Noto_Sans_TC } from 'next/font/google'
 import StyledComponentsRegistry from '~/lib/registry'
 import Providers from './providers'
 import { OG_DESC, OG_TITLE, staticFileDestination } from '~/config'
+
+const notoSansTC = Noto_Sans_TC({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-tc',
+})
 
 const SITE_TITLE = '鏡週刊 Mirror Media'
 const FB_APP_ID = '175313259598308'
 const FB_PAGE_ID = '1855418728011324'
 
 const TITLE = OG_TITLE ? `${OG_TITLE} - ${SITE_TITLE}` : SITE_TITLE
-// 靜態匯出後只有單一頁面，網址固定為 index.html（原本由 router.asPath 組出）
 const PAGE_URL = `${staticFileDestination}/index.html`
 const OG_IMAGE = `${staticFileDestination}/images/og.jpg`
 
 export const metadata: Metadata = {
+  /**
+   ref: https://nextjs.org/docs/15/app/api-reference/functions/generate-metadata#metadatabase
+   metadataBase 會影響其他的 metadata 設定，如果是 relative path，會自動加上 metadataBase 的 origin
+   */
   metadataBase: new URL(staticFileDestination),
   title: TITLE,
   description: OG_DESC,
@@ -96,20 +107,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-Hant-TW">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font -- App Router root layout 對所有頁面生效，此規則僅適用 Pages Router */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="zh-Hant-TW" className={notoSansTC.variable}>
       <body>
         <StyledComponentsRegistry>
           <Providers>{children}</Providers>
