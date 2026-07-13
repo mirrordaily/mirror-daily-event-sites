@@ -108,7 +108,7 @@ export default function SideMenu() {
   const navLists = useNavLists()
 
   const [show, setShow] = useState(false)
-  // eslint-disable-next-line no-unused-vars
+
   const [href, setHref] = useState('')
 
   useEffect(() => {
@@ -140,7 +140,6 @@ export default function SideMenu() {
       <Link
         key={index}
         href={item.href}
-        scroll={false}
         onClick={() => {
           setShow(!show)
         }}

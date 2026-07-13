@@ -51,7 +51,7 @@ export default function NavLists() {
         }
 
         return (
-          <Link key={index} href={item.href} scroll={false}>
+          <Link key={index} href={item.href}>
             <Item $show={item.show}>{item.title}</Item>
           </Link>
         )
