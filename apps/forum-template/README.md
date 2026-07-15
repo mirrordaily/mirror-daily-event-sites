@@ -17,6 +17,8 @@
 3. 接著，使用 `pnpm --filter [apps name] run dev` 啟動服務，進行開發測試。
 4. 開發完畢後，使用 `pnpm --filter [apps name] run build` 來建構正式環境程式（已設定 `output: 'export'`，build 會直接生成 `out` 靜態專題資料夾），並將資料夾內的檔案們放上 GCS。
 
+註：安裝依賴時，`@readr-media/react-image` 與 `@readr-media/share-button` 會因 peer dependency 尚未支援 React 19 而出現 warning，實際運作不受影響，詳見[根目錄 README](../../README.md)。
+
 ## Project Directory Explanation (專案目錄結構說明)
 
 ```
