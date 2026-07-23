@@ -1,6 +1,8 @@
 packages:
   - 'apps/*'
   - 'packages/*'
+publicHoistPattern:
+  - '*eslint*'
 allowBuilds:
   sharp: true
   unrs-resolver: true
